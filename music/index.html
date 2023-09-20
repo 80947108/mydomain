@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1" />
+		<title>安安静静听音乐</title>
+		<link rel="stylesheet"
+			  href="css/player.css">
+		<style>
+			body { 
+			background:url("img/Music_Girls.jpg")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */  /* https://zh.wikipedia.org/wiki/桂纶镁 */
+			background-size:cover;  /* 让背景图基于容器大小伸缩 */
+			background-attachment:fixed; /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+			text-align: left;
+			background-color: rgba(255,255,255,0.2);   /* 设置背景颜色：默认透明色，背景图加载过程中会显示背景色 */
+			      																				 }
+		</style>
+	</head>
+	<body>
+		<div id="QPlayer">
+			<div id="pContent">
+				<div id="player">
+					<span class="cover"></span>
+					<div class="ctrl">
+						<div class="musicTag marquee">
+							<strong>Title</strong>
+							<span> - </span>
+							<span class="artist">Artist</span>
+						</div>
+						<div class="progress">
+							<div class="timer left">0:00</div>
+							<div class="contr">
+								<div class="rewind icon"></div>
+								<div class="playback icon"></div>
+								<div class="fastforward icon"></div>
+							</div>
+							<div class="right">
+								<div class="liebiao icon"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssBtn">
+					<div class="adf"></div>
+				</div>
+			</div>
+			<ol id="playlist"></ol>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.marquee.min.js"></script>
+
+		<script>
+			var	playlist = [
+			{title:"满天星辰不及你",artist:"ycccc",mp3:"./mp3/ycccc-满天星辰不及你.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			{title:"可能",artist:"程响",mp3:"./mp3/程响-可能.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			{title:"星河万里",artist:"Rom邢锐",mp3:"./mp3/星河万里-Rom邢锐.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			{title:"人间惊鸿客",artist:"叶里",mp3:"./mp3/叶里-人间惊鸿客.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			{title:"人间烟火",artist:"程响",mp3:"./mp3/程响-人间烟火.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			{title:"如愿",artist:"王菲",mp3:"./mp3/王菲-如愿.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			{title:"你是人间四月天",artist:"邵帅",mp3:"./mp3/邵帅-你是人间四月天.mp3",cover:"http://p4.music.126.net/7VJn16zrictuj5kdfW1qHA==/3264450024433083.jpg?param=106x106",},
+			];
+			var isRotate = true;
+			var autoplay = false;
+		</script>
+		<script src="js/player.js"></script>
+		<script>
+			function bgChange(){
+			var lis= $('.lib');
+			for(var i=0; i<lis.length; i+=2)
+			lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+			}
+			window.onload = bgChange;
+		</script>
+
+
+<!--樱花调用接口-->
+<script src="https://api.vvhan.com/api/yinghua"></script>
+
+<!-- 以下为网页鼠标点击特效（爱心） -->
+    <script type="text/javascript">
+         ! function (e, t, a) {
+            function r() {
+                for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[
+                        e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x +
+                    "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e]
+                    .scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+                requestAnimationFrame(r)
+            }
+ 
+            function n() {
+                var t = "function" == typeof e.onclick && e.onclick;
+                e.onclick = function (e) {
+                    t && t(), o(e)
+                }
+            }
+ 
+            function o(e) {
+                var a = t.createElement("div");
+                a.className = "heart", s.push({
+                    el: a,
+                    x: e.clientX - 5,
+                    y: e.clientY - 5,
+                    scale: 1,
+                    alpha: 1,
+                    color: c()
+                }), t.body.appendChild(a)
+            }
+ 
+            function i(e) {
+                var a = t.createElement("style");
+                a.type = "text/css";
+                try {
+                    a.appendChild(t.createTextNode(e))
+                } catch (t) {
+                    a.styleSheet.cssText = e
+                }
+                t.getElementsByTagName("head")[0].appendChild(a)
+            }
+ 
+            function c() {
+                return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math
+                    .random()) + ")"
+            }
+            var s = [];
+            e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e
+                .mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+                    setTimeout(e, 1e3 / 60)
+                }, i(
+                    ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
+                ), n(), r()
+        }(window, document);
+    </script>
+
+
+
+
+	</body>
+</html>
