@@ -1,18 +1,6 @@
 # Emoji
 GitHUb表情符号大全
-# emoji-list
-emoji list
 
-[![](https://img.shields.io/github/issues/caiyongji/emoji-list.svg)](https://github.com/caiyongji/emoji-list/issues)  [![](https://img.shields.io/github/forks/caiyongji/emoji-list.svg)](https://github.com/caiyongji/emoji-list/network) [![](https://img.shields.io/github/stars/caiyongji/emoji-list.svg)](https://github.com/caiyongji/emoji-list/stargazers) [![](https://travis-ci.org/caiyongji/emoji-list.svg?branch=master)](https://travis-ci.org/caiyongji/emoji-list) [![](https://img.shields.io/github/release/caiyongji/emoji-list.svg)](https://github.com/caiyongji/emoji-list/releases)[![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/chinese.svg)](README-CN.md)
-
-Table of Contents
------------------
-
-- [People](#people)
-- [Nature](#nature)
-- [Objects](#objects)
-- [Places](#places)
-- [Symbols](#symbols)
 
 ## People ##
 
