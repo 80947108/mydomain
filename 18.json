@@ -22,7 +22,7 @@
 {"key": "白嫖","name": "白嫖","type": 0,"api": "https://www.kxgav.com/api/xml.php","searchable": 1,"quickSearch": 1,"filterable": 1},
 
     
-{"key": "博天堂","name": "博天堂","type":0,"api": "http://bttcj.com/inc/sapi.php", "searchable": 1,"quickSearch": 1, "filterable": 0 },
+{"key": "博天堂","name": "博天堂","type":0,"api": "http://bttcj.com/inc/sapi.php"， "searchable": 1,"quickSearch": 1, "filterable": 0 },
 {"key": "开云资源","name": "开云资源","type": 1,"api": "https://kaiyunzy1.com/inc/apijson_vod.php", "searchable": 1,"quickSearch": 1, "filterable": 0 },
 {"key": "蛋蛋视频","name": "蛋蛋视频","type": 1,"api": "https://156.249.29.8/inc/apijson_vod.php", "searchable": 1,"quickSearch": 1, "filterable": 0 },
 {"key":"伊人资源","name":"伊人资源","type":1,"api":"https://api.yirenziyuan.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
@@ -43,10 +43,10 @@
 {"key":"QQ传媒","name":"QQ传媒","type":1,"api":"https://qqcm.sbs/api.php/provide/vod/","searchable":0,"quickSearch":0},   
 {"key":"极速官采","name":"极速官采","type":1,"api":"http://gc.zhuijuba.vip/api.php/provide/vod/","playUrl":"","searchable":1,"quickSearch":1}],
 
-"lives":[{"group":"redirect","channels":[{"name":"live","urls":[
-// base64(https://gitea.com/breadmyth/tv/raw/branch/main/live/huya.txt) = aHR0cHM6Ly9naXRlYS5jb20vYnJlYWRteXRoL3R2L3Jhdy9icmFuY2gvbWFpbi9saXZlL2h1eWEudHh0
-"proxy://do=live&type=txt&ext=aHR0cHM6Ly9jb2RlYmVyZy5vcmcvQUJDRC9aRFkvcmF3L2JyYW5jaC9tYWluL3R2"
+"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9oeWY4ODguZXUub3JnL3R2L0gudHh0"
 ]}]}],
+// base64(https://gitea.com/breadmyth/tv/raw/branch/main/live/huya.txt) = aHR0cHM6Ly9naXRlYS5jb20vYnJlYWRteXRoL3R2L3Jhdy9icmFuY2gvbWFpbi9saXZlL2h1eWEudHh0
+
     
 
   "parses": [
