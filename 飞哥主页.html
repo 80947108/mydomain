@@ -530,6 +530,48 @@ document.write("</div>")
 <!--以上为问候语-->
 
 
+		
+<!--时间-->   
+<script src="./js/lunar.min.js"></script>
+<script>
+  let lunar = Solar.fromDate(new Date()).getLunar().toString();
+  let times;
+  const domYear = document.getElementsByClassName('year-month-day')[0];
+  const domHour = document.getElementsByClassName('hour-minut-second')[0];
+  const domWeek = document.getElementsByClassName('week')[0];
+  const domLunar = document.getElementsByClassName('lunar')[0];
+  const weekObj = {
+    1: '一',
+    2: '二',
+    3: '三',
+    4: '四',
+    5: '五',
+    6: '六',
+    0: '日',
+  };
+
+  // 创建一个函数来更新所有的显示内容
+  function updateDisplays() {
+    times = dayjs().format('YYYY年MM月DD日 HH:mm:ss').split(' ');
+    domYear.classList.add('custom-font');
+    domYear.innerText = times[0];
+
+    const fontFace = new FontFace('custom-font-hour', `url(static/font/Orbitron-Medium.ttf)`);
+    fontFace.load().then(() => {
+      document.fonts.add(fontFace);
+      domHour.classList.add('custom-font-hour');
+      domHour.innerText = times[1];
+    });
+
+    domWeek.classList.add('custom-font');
+    domWeek.innerText = `星期${weekObj[dayjs().day()]}`;
+    domLunar.classList.add('custom-font');
+    domLunar.innerText = lunar;
+  }
+
+  // 使用 setInterval 调用更新函数
+  setInterval(updateDisplays, 1000);
+</script>
 
 
 
