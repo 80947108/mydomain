@@ -556,7 +556,7 @@ document.write("</div>")
     domYear.classList.add('custom-font');
     domYear.innerText = times[0];
 
-    const fontFace = new FontFace('custom-font-hour', `url(static/font/Orbitron-Medium.ttf)`);
+    const fontFace = new FontFace('custom-font-hour', `url(./fonts/Orbitron-Medium.ttf)`);
     fontFace.load().then(() => {
       document.fonts.add(fontFace);
       domHour.classList.add('custom-font-hour');
