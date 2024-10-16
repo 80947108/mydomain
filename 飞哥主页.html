@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/h.9c69ed6c.css">
 	<link rel="stylesheet" type="text/css" href="css/nekotora.99cf6f8c.css">
 	<link rel="stylesheet" href="/live2d/css/live2d.css" />
+	<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script><!--调用时间函数-->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137340638-1"></script>
 	<script>
 		function a() {
@@ -98,7 +99,40 @@
 
 
 
+<!--显示时间样式-->
+	<style>
+    .toast-bottom-center {
+        position: absolute;
+        left: 30px;
+        right: 10px;
+        top: 20px;
+    }
+    .time-content {
+        width: 100%;
+        height: 140px;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 10% auto;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: .1em;
+    }
+    .time-content .week {
+        margin-left: 15px;
+    }
+    .lunar {
+        font-size: 16px;
+    }
+    .hour-minut-second {
+        font-size: 40px;
+    }
+</style>
 
+
+
+<!--侧方按钮-->
 	<nav>
 		<a href="https://live.fanmingming.com/player/?vurl=" target="_blank" class="active">m3u8播放器</a> <a class="clip"></a>
 		<a href="./yanhua/index.html" target="_blank">看烟花</a>
@@ -118,6 +152,20 @@
 		<div class="main">
 			<div class="ch intro">
 				<div class="container">
+
+
+<!-- 显示时间 -->
+                    <div class="time-content">
+                        <p><span class="year-month-day"></span> <span class="week"></span></p>
+                        <p class="hour-minut-second"></p>
+                        <p class="lunar"></p>
+                    </div>
+
+
+
+
+
+					
 					<div class="hello">
 						<h1 id="slogan">努力憋坏中...</h1>
                                                 <!--随机文字信息在\js\page.3a0791a3.js中修改-->
@@ -531,7 +579,7 @@ document.write("</div>")
 
 
 		
-<!--时间-->   
+<!--显示时间代码-->   
 <script src="./js/lunar.min.js"></script>
 <script>
   let lunar = Solar.fromDate(new Date()).getLunar().toString();
