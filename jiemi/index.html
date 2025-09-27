@@ -8,6 +8,24 @@
         <link rel="apple-touch-icon" href="/static/icon/favicon.ico">
     <link rel="shortcut icon" href="/static/icon/favicon.ico">
     <link rel="Bookmark" href="/static/icon/favicon.ico">
+    <script>
+// 防止页面被跳转
+window.onbeforeunload = function() {
+    if (window.location.href === "about:blank") {
+        window.stop(); // 停止跳转
+        return false;
+    }
+};
+
+// 监控URL变化
+let currentUrl = window.location.href;
+setInterval(() => {
+    if (window.location.href === "about:blank" && currentUrl !== "about:blank") {
+        window.history.back(); // 尝试返回
+        currentUrl = window.location.href;
+    }
+}, 100);
+</script>
     <meta name="keywords" content="工具网,在线,工具,tvbox,TVBox,接口解密,接口">
     <meta name="description" content="这是专注于TVBox接口解密的专业网站，深度解析各类TVBox接口的隐藏奥秘与使用技巧，拆解复杂代码逻辑，挖掘优质影视资源接入方法。通过系统化教程、实用案例分享，帮助用户快速掌握接口获取、配置及优化方法。">
     <link rel="stylesheet" href="./static/css/style.css">
