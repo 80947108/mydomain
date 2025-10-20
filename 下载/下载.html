@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞哥软件下载okjack版 & fongmi版</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .version-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 5px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tab {
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .card-description {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .download-btn i {
+            margin-right: 10px;
+        }
+        
+        .btn-1 {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-1:hover {
+            background: linear-gradient(135deg, #FF5252, #FF7979);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-2 {
+            background: linear-gradient(135deg, #4ECDC4, #88D9E6);
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+        
+        .btn-2:hover {
+            background: linear-gradient(135deg, #26A69A, #4ECDC4);
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+        }
+        
+        .btn-3 {
+            background: linear-gradient(135deg, #FFA726, #FFCA28);
+            box-shadow: 0 4px 15px rgba(255, 167, 38, 0.3);
+        }
+        
+        .btn-3:hover {
+            background: linear-gradient(135deg, #FF9800, #FFB74D);
+            box-shadow: 0 6px 20px rgba(255, 167, 38, 0.4);
+        }
+        
+        .download-options {
+            margin-top: 15px;
+        }
+        
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .version-1 .version-badge {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+        
+        .version-2 .version-badge {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+        
+        .download-options {
+            margin-top: 15px;
+        }
+        
+        .download-option-title {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .version-tabs {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .tab {
+                text-align: center;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>飞哥软件下载</h1>
+            <p class="subtitle">选择最适合您的版本和下载地址，享受高速稳定的下载体验</p>
+        </header>
+        
+        <div class="version-tabs">
+            <div class="tab active" data-tab="version1">okjack版</div>
+            <div class="tab" data-tab="version2">fongmi版</div>
+        </div>
+        
+        <!-- okjack版内容 -->
+        <div class="tab-content active" id="version1">
+            <div class="download-grid">
+                <!-- 电视版32位 -->
+                <div class="download-card version-1">
+                    <div class="version-badge">okjack版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h2 class="card-title">电视版32位</h2>
+                    <p class="card-description">适用于32位架构的智能电视和电视盒子</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@okjack/apk/release/leanback-armeabi_v7a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/okjack/apk/release/leanback-armeabi_v7a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/okjack/apk/release/leanback-armeabi_v7a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: armeabi-v7a</span>
+                        <span>类型: 电视版</span>
+                    </div>
+                </div>
+                
+                <!-- 电视版64位 -->
+                <div class="download-card version-1">
+                    <div class="version-badge">okjack版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h2 class="card-title">电视版64位</h2>
+                    <p class="card-description">适用于64位架构的智能电视和电视盒子</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@okjack/apk/release/leanback-arm64_v8a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/okjack/apk/release/leanback-arm64_v8a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/okjack/apk/release/leanback-arm64_v8a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: arm64-v8a</span>
+                        <span>类型: 电视版</span>
+                    </div>
+                </div>
+                
+                <!-- 手机版32位 -->
+                <div class="download-card version-1">
+                    <div class="version-badge">okjack版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2 class="card-title">手机版32位</h2>
+                    <p class="card-description">适用于32位架构的Android手机和平板</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@okjack/apk/release/mobile-armeabi_v7a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/okjack/apk/release/mobile-armeabi_v7a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/okjack/apk/release/mobile-armeabi_v7a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: armeabi-v7a</span>
+                        <span>类型: 手机版</span>
+                    </div>
+                </div>
+                
+                <!-- 手机版64位 -->
+                <div class="download-card version-1">
+                    <div class="version-badge">okjack版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2 class="card-title">手机版64位</h2>
+                    <p class="card-description">适用于64位架构的Android手机和平板</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@okjack/apk/release/mobile-arm64_v8a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/okjack/apk/release/mobile-arm64_v8a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/okjack/apk/release/mobile-arm64_v8a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: arm64-v8a</span>
+                        <span>类型: 手机版</span>
+                    </div>
+                </div>
+                
+                <!-- 海信专版 -->
+                <div class="download-card version-1">
+                    <div class="version-badge">okjack版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h2 class="card-title">海信专版</h2>
+                    <p class="card-description">专为海信电视优化的版本，兼容性更好</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@okjack/apk/release/海信专版.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/okjack/apk/release/海信专版.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/okjack/apk/release/海信专版.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: 通用</span>
+                        <span>类型: 电视专版</span>
+                    </div>
+                </div>
+                
+                <!-- 电视版-X5离线版 -->
+                <div class="download-card version-1">
+                    <div class="version-badge">okjack版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h2 class="card-title">电视版-X5离线版</h2>
+                    <p class="card-description">适用于X5设备的离线版本，无需网络即可使用</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@okjack/apk/release/电视版-X5离线.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/okjack/apk/release/电视版-X5离线.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/okjack/apk/release/电视版-X5离线.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: 通用</span>
+                        <span>类型: 离线版</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- fongmi版内容 -->
+        <div class="tab-content" id="version2">
+            <div class="download-grid">
+                <!-- 电视版32位 -->
+                <div class="download-card version-2">
+                    <div class="version-badge">fongmi版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h2 class="card-title">电视版32位</h2>
+                    <p class="card-description">适用于32位架构的智能电视和电视盒子</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@fongmi/apk/release/leanback-armeabi_v7a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/release/leanback-armeabi_v7a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/fongmi/apk/release/leanback-armeabi_v7a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: armeabi-v7a</span>
+                        <span>类型: 电视版</span>
+                    </div>
+                </div>
+                
+                <!-- 电视版64位 -->
+                <div class="download-card version-2">
+                    <div class="version-badge">fongmi版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h2 class="card-title">电视版64位</h2>
+                    <p class="card-description">适用于64位架构的智能电视和电视盒子</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@fongmi/apk/release/leanback-arm64_v8a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/release/leanback-arm64_v8a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/fongmi/apk/release/leanback-arm64_v8a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: arm64-v8a</span>
+                        <span>类型: 电视版</span>
+                    </div>
+                </div>
+                
+                <!-- 手机版32位 -->
+                <div class="download-card version-2">
+                    <div class="version-badge">fongmi版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2 class="card-title">手机版32位</h2>
+                    <p class="card-description">适用于32位架构的Android手机和平板</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@fongmi/apk/release/mobile-armeabi_v7a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/release/mobile-armeabi_v7a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/fongmi/apk/release/mobile-armeabi_v7a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: armeabi-v7a</span>
+                        <span>类型: 手机版</span>
+                    </div>
+                </div>
+                
+                <!-- 手机版64位 -->
+                <div class="download-card version-2">
+                    <div class="version-badge">fongmi版</div>
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2 class="card-title">手机版64位</h2>
+                    <p class="card-description">适用于64位架构的Android手机和平板</p>
+                    
+                    <div class="download-options">
+                        <div class="download-option-title">选择下载地址：</div>
+                        <a href="https://fastly.jsdelivr.net/gh/FongMi/Release@fongmi/apk/release/mobile-arm64_v8a.apk" class="download-btn btn-1">
+                            <i class="fas fa-download"></i> 地址1 (jsdelivr)
+                        </a>
+                        <a href="https://wget.la/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/release/mobile-arm64_v8a.apk" class="download-btn btn-2">
+                            <i class="fas fa-download"></i> 地址2 (wget.la)
+                        </a>
+                        <a href="https://cns.菜妮丝.top/https://github.com/FongMi/Release/raw/fongmi/apk/release/mobile-arm64_v8a.apk" class="download-btn btn-3">
+                            <i class="fas fa-download"></i> 地址3 (菜妮丝)
+                        </a>
+                    </div>
+                    
+                    <div class="file-info">
+                        <span>架构: arm64-v8a</span>
+                        <span>类型: 手机版</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 飞哥 | 技术支持: 80947108@qq.com 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 版本切换功能
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有tab的active类
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // 添加当前tab的active类
+                tab.classList.add('active');
+                
+                // 隐藏所有内容
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 显示对应内容
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
